@@ -1,0 +1,87 @@
+.sidebar {
+  min-height: 100vh;
+  background: #fff;
+  padding: 20px 6%;
+  border-right: 1px solid #ddd;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* pushes log out to bottom */
+  align-items: center; /* centers everything horizontally */
+  text-align: center;
+}
+
+.sidebar img {
+  max-width: 160px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  flex-grow: 1; /* keeps nav links centered */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.sidebar .nav-link {
+  color: #333;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.sidebar .nav-link.active {
+  background: #A33FA3;
+  color: #fff;
+}
+
+.logout {
+  margin-top: 20px;
+  color: #A33FA3;
+  font-weight: bold;
+}
+
+.main-content {
+  padding: 20px 6%;
+}
+
+header {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.dashboard-card {
+  border-radius: 12px;
+  background: #fff;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.dashboard-card h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dashboard-card p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.dashboard-card.see-more {
+  background: #A33FA3;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

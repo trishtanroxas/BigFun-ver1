@@ -1,0 +1,251 @@
+/* style.css - custom styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+  --accent:#8f3b72;
+  --accent-dark:#7a335f;
+  --gold:#FFD700;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  font-family: "Montserrat", Arial, sans-serif;
+  color:#111;
+  background:#fff;
+}
+
+/* NAV */
+.site-nav {
+  padding: 24px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: dm sans, sans-serif;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 10;
+}
+
+nav a {
+  font-weight: 400;
+  font-size: 16px;
+  transition: all .3s ease;
+}
+
+.site-nav .logo img {
+  height: 54px;
+  transition: all 0.3s ease;
+}
+
+.site-nav .logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Book Now Button */
+.rounded-book {
+  border-radius: 30px;
+  padding: 5px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #8C367C;
+  font-family: dm sans, sans-serif;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.rounded-book:hover {
+  background-color: #732d68;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Mobile Nav Modal */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 20;
+
+}
+
+.mobile-nav a {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  color: #8C367C;
+}
+
+/* Menu Button */
+.menu-btn, .close-btn {
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover, .close-btn:hover {
+  color: #8C367C;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .menu-btn { display: block; }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Footer */
+.site-footer {
+  margin-top: 250px; /* ✅ space above footer */
+  background-color: #faecf6;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.site-footer .terms a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.site-footer .terms a:hover {
+  color: #8C367C;
+}
+
+.site-footer .footer-logo img {
+  margin-top: 15px;
+  max-height: 40px;
+}
+
+/* Privacy Policy Modal Styling */
+.privacy-policy h6 {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: "Inria Serif", serif;
+}
+
+.privacy-policy p {
+  margin-bottom: 18px;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .privacy-policy h6 {
+    font-size: 16px;
+  }
+  .privacy-policy p {
+    font-size: 14px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Help Section - 12 column grid */
+.help-info {
+  width: 100%;
+  max-width: 1200px; /* matches 12-column width */
+  margin: 120px auto 60px;
+  padding: 0 15px; /* gutter spacing */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+}
+
+/* Main Title (centered, full width) */
+.help-info h2 {
+  grid-column: 1 / span 12;
+  font-family: "Inria Serif", serif;
+  font-weight: 500;
+  font-size: 60px;
+  margin-bottom: 1.2rem;
+  color: #000;
+  text-align: center;
+}
+
+/* Description (centered, spans middle columns) */
+.help-description {
+  grid-column: 2 / span 10; /* centered with margins */
+      font-family: "Inter", sans-serif;
+      font-size: 20px; /* ~25px */
+  margin-bottom: 50px;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* FAQ Section */
+.faq-section {
+  grid-column: 2 / span 10; /* keep aligned with description */
+  margin-top: 40px;
+}
+
+.faq-section h3 {
+  font-family: "Inria Serif", serif;
+  font-weight: 500;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #111;
+}
+
+/* Each Q&A */
+.faq-item {
+  margin-bottom: 35px;
+}
+
+.faq-item strong {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  color: #444;
+  line-height: 1.6;
+  margin-left: 20px;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 992px) {
+  .help-info { grid-gap: 15px; }
+  .help-description { grid-column: 1 / span 12; }
+  .faq-section { grid-column: 1 / span 12; }
+  .help-info h2 { font-size: 2.5rem; }
+}
+
+@media (max-width: 576px) {
+  .help-info h2 { font-size: 35px; }
+  .help-description { font-size: 18px; }
+  .faq-item strong { font-size: 18px; }
+  .faq-item p { font-size: 16px; margin-left: 10px; }
+}
+
+
+/* -------------------------------------------------------------------------------------------------------------- */
