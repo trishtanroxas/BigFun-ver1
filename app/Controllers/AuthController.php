@@ -16,6 +16,18 @@ class AuthController extends Controller {
         $this->view('auth/login');
     }
 
+    public function signup(): void {
+        $this->view('auth/signup');
+    }
+
+    public function forgotPassword(): void {
+        $this->view('auth/forgot-password');
+    }
+
+    public function resetPassword(): void {
+        $this->view('auth/reset-password');
+    }
+
     public function login(): void {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             $this->json(['status' => 'error', 'message' => 'Invalid request method']);

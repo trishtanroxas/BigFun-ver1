@@ -1,0 +1,671 @@
+/* style.css - custom styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+  --accent:#8f3b72;
+  --accent-dark:#7a335f;
+  --gold:#FFD700;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  font-family: "Montserrat", Arial, sans-serif;
+  color:#111;
+  background:#fff;
+}
+
+/* NAV */
+.site-nav {
+  padding: 24px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: dm sans, sans-serif;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 10;
+}
+
+nav a {
+  font-weight: 400;
+  font-size: 16px;
+  transition: all .3s ease;
+}
+
+.site-nav .logo img {
+  height: 54px;
+  transition: all 0.3s ease;
+}
+
+.site-nav .logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Book Now Button */
+.rounded-book {
+  border-radius: 30px;
+  padding: 5px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #8C367C;
+  font-family: dm sans, sans-serif;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.rounded-book:hover {
+  background-color: #732d68;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Mobile Nav Modal */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 20;
+
+}
+
+.mobile-nav a {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  color: #8C367C;
+}
+
+/* Menu Button */
+.menu-btn, .close-btn {
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover, .close-btn:hover {
+  color: #8C367C;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .menu-btn { display: block; }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Default Hero (Desktop / Laptop) */
+         .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: #fff; /* Text color is white */
+        padding: 8vh 6%;
+        position: relative;
+        overflow: hidden; 
+        background-color: #000; /* Fixes white flicker during fade */
+    }
+
+    /* Dark overlay for text readability */
+    .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0; /* (top: 0, left: 0, bottom: 0, right: 0) */
+        background: rgba(0, 0, 0, 0.45); /* 45% black overlay */
+        z-index: 2; /* Sits on top of slides, below content */
+    }
+
+    .hero .copy {
+        max-width: 1100px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 3; /* Sits on top of the overlay */
+    }
+
+    .rounded-login,
+    .rounded-signup {
+        border-radius: 30px;
+        padding: 5px 60px;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.3s ease;
+        /* Added for <a> tag styling */
+        text-decoration: none;
+        display: inline-block;
+    }
+    .rounded-login {
+        color: #8C367C;
+        background-color: #ffffff;
+    }
+    .rounded-signup {
+        background-color: #8C367C;
+        color: #ffffff;
+    }
+
+    /* Hover effects */
+    .rounded-login:hover {
+        background-color: #8C367C;
+        color: #ffffff;
+    }
+    .rounded-signup:hover {
+        background-color: #ffffff;
+        color: #8C367C;
+    }
+
+    /* Heading */
+    .hero h1 {
+        font-family: 'Inter', sans-serif;
+        font-size: clamp(40px, 8vw, 100px);
+        line-height: 1.3;
+        margin-bottom: 60px;
+        font-weight: 800;
+    }
+    .hero h1 em { font-style: italic; color: #8f3b72; font-weight: 700; }
+    .hero h1 span.big { color: #12984a; font-style: italic; font-weight: 700; }
+
+    /* Paragraph */
+    .hero p.lead {
+        font-size: 23px;
+        margin-bottom: 22px;
+        opacity: 0.9;
+        font-family: 'Inria Serif', serif;
+        line-height: 1.2;
+        font-weight: 200;
+    }
+
+    /* Call Us section at bottom (Desktop default) */
+    .hero .contact-info {
+        position: absolute;
+        bottom: 40px;
+        left: 6%;
+        right: 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: clamp(16px, 1.6vw, 20px);
+        font-weight: 200;
+        position: absolute;
+        z-index: 3; /* Sits on top of the overlay */
+    }
+
+    /* =====================================================
+    RESPONSIVE CSS
+    =====================================================
+    */
+
+    /* RESPONSIVE ADJUSTMENTS  */
+    /* Tablet (≤992px) */
+    @media (max-width: 992px) {
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 70px);
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        .hero p.lead {
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .rounded-login,
+        .rounded-signup {
+            padding: 10px 40px;
+            font-size: 15px;
+        }
+
+        .hero .contact-info {
+            bottom: 30px;
+            font-size: 16px;
+        }
+    }
+    /* Mobile (≤768px) */
+    @media (max-width: 768px) {
+        .hero {
+            padding: 6vh 5%;
+            text-align: center;
+        }
+
+        .hero .copy {
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 7vw, 60px);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .hero p.lead {
+            font-size: 18px;
+            line-height: 1.5;
+            max-width: 90%;
+            margin: 0 auto 25px;
+        }
+
+        /* Target the div holding the buttons */
+        .hero .copy > div {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .rounded-login,
+        .rounded-signup {
+            width: auto;          /* no fixed width */
+            min-width: 160px;     /* keep good size */
+            max-width: 260px;     /* prevent too wide */
+            padding: 12px 40px;   /* consistent pill shape */
+            font-size: 16px;
+            border-radius: 30px;
+        }
+
+        /* Contact info centered */
+        .hero .contact-info {
+            flex-direction: column;
+            text-align: center;
+            gap: 6px;
+            bottom: 20px;
+        }
+    }
+    /* Extra Small Mobile (≤480px) */
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p.lead {
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .rounded-login,
+        .rounded-signup {
+            font-size: 14px;
+            padding: 10px 30px;
+            min-width: 140px;
+        }
+    }
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Servicing Section */
+.servicing {
+  background: #ffffff;            
+  border: 1px solid #ddd;         
+  padding: 80px 10%;
+}
+
+.servicing-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.servicing-left {
+  flex: 1;
+}
+
+.servicing-left h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-family: inter, sans-serif;
+}
+
+.servicing-left p {
+  font-size: 20px;
+  font-weight: 200;
+  color: #000;
+  font-family: inter, sans-serif;
+  margin-bottom: 16px;
+}
+
+.servicing-right {
+  flex: 1;
+  color: #555;
+  font-size: 23px;
+  line-height: 1.7;
+  font-family: inter, sans-serif;
+  text-align: justify;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Hire Service - RE-ADDED CAROUSEL & CARD STYLING */
+.services-carousel {
+  text-align: center;
+  padding: 100px 20px;
+  background: #fff;
+}
+
+.section-header h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  font-family: inria serif, serif;
+  font-weight: 500;
+}
+
+.section-header p {
+  font-size: 20px;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  margin-bottom: 80px;
+  font-family: inter, sans-serif;
+}
+
+/* Carousel wrapper */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+/* Track */
+.carousel-track {
+  display: flex;
+  align-items: stretch;
+  gap: 30px;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Card styling */
+.card {
+  flex: 0 0 calc(33.333% - 20px);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  min-height: 550px;
+}
+
+.card h3 {
+  font-size: 25px;
+  margin-bottom: 15px;
+  font-family: inria serif, serif;
+}
+
+/* Image behavior inside cards - THIS FIXES THE ENORMOUS IMAGES */
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 12;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  max-height: 250px; /* Force a maximum height */
+}
+
+.info {
+  margin-bottom: 15px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-family: inter, sans-serif;
+}
+
+.details {
+  font-size: 15px;
+  color: #444;
+  font-family: inter, sans-serif;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.btn-service {
+  background: #8C367C;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.3s;
+  font-family: inter, sans-serif;
+}
+
+.btn-service:hover {
+  background: #6a295e;
+}
+
+.btn-more {
+  font-size: 15px;
+  color: #333;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+.btn-more:hover {
+  color: #8C367C;
+  text-decoration: none;
+}
+
+/* Carousel buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: white;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 22px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.carousel-btn:hover {
+  opacity: 0.8;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Partnership Section */
+.partnership {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.partnership h2 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: "Inria Serif", serif;
+  margin-bottom: 15px;
+}
+
+.partnership p:not(.tagline) {
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 190px; /* only intro paragraph gets this */
+}
+
+.partnership .highlight {
+  font-weight: bold;
+  font-style: italic;
+  color: #8C367C; /* theme color */
+}
+
+/* Logo Carousel */
+.logo-carousel {
+  overflow: hidden;
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto 40px;
+  margin-bottom: 190px;
+}
+
+.logo-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: scroll 40s linear infinite; /* smoother, longer scroll */
+}
+
+.logo-track img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.logo-track img:hover {
+  filter: grayscale(0%);
+}
+
+/* Continuous scroll effect */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* shift one full set */
+}
+
+/* Tagline */
+.tagline {
+  font-style: italic;
+  font-size: 20px;
+  color: #444;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 100px;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+/* Contact Section */
+.contact-section {
+  margin-top: 30px;
+}
+
+.contact-title {
+  font-family: "Inria Serif", serif;
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.contact-text {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+/* Inputs & textarea */
+#contactForm .form-control {
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  border: 1px solid #000000;
+  transition: all 0.3s ease;
+}
+
+#contactForm .form-control:focus {
+  border-color: #8C367C;
+  box-shadow: 0 0 0 3px rgba(140, 54, 124, 0.15);
+}
+
+/* Button */
+#contactForm .btn-send {
+  background-color: #8C367C;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+#contactForm .btn-send:hover {
+  background-color: #702c64;
+  transform: translateY(-2px);
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------ */
+/* Footer */
+.site-footer {
+  margin-top: 250px; /* ✅ space above footer */
+  background-color: #faecf6;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.site-footer .terms a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.site-footer .terms a:hover {
+  color: #8C367C;
+}
+
+.site-footer .footer-logo img {
+  margin-top: 15px;
+  max-height: 40px;
+}
+
+/* Privacy Policy Modal Styling */
+.privacy-policy h6 {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: "Inria Serif", serif;
+}
+
+.privacy-policy p {
+  margin-bottom: 18px;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #444;
+}

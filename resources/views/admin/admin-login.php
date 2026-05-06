@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BigFun - Login</title>
+    <title>BigFun - Admin Login</title>
     <link rel="icon" type="image/png" href="assets/images/bfun.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,13 +18,11 @@
 
 <body>
   <div class="login-container">
-    <h2>Log in</h2>
-    <p>Need an account? <a href="index.php?route=signup">Create an account</a></p>
+    <h2>Admin Log in</h2>
+    <p>Not an admin? <a href="index.php?route=login-form">Return to user login</a></p>
 
-    <!-- The form now submits directly to the user login backend -->
+    <!-- This form submits to the admin login backend -->
     <form id="loginForm">
-
-      <!-- Removed the .role-selector div -->
       
       <div class="form-group">
         <label for="email">Email Address</label>
@@ -35,7 +33,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
         <span class="toggle-password">👁</span>
-        <div class="forgot-link"><a href="forgot-password.php">Forgot password?</a></div>
+        <div class="forgot-link"><a href="forgot-password-admin.php">Forgot password?</a></div>
       </div>
 
       <button type="submit" class="login-btn">Log in</button>
@@ -91,8 +89,8 @@
       e.preventDefault();
       const formData = new FormData(this);
       
-      // MODIFIED: Hard-coded the endpoint for user login
-      const endpoint = 'index.php?route=login';
+      // MODIFIED: Hard-coded the endpoint for admin login
+      const endpoint = 'backend/login-admin.php';
 
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -102,7 +100,7 @@
       const result = await response.json();
 
       if (result.status === 'success') {
-        showModal("Welcome", "Login successful! Redirecting...");
+        showModal("Welcome Admin", "Login successful! Redirecting...");
         setTimeout(() => {
           window.location.href = result.redirect;
         }, 1500);
