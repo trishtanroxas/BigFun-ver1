@@ -1,0 +1,234 @@
+/* style.css - custom styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+  --accent:#8f3b72;
+  --accent-dark:#7a335f;
+  --gold:#FFD700;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  font-family: "Montserrat", Arial, sans-serif;
+  color:#111;
+  background:#fff;
+}
+
+/* NAV */
+.site-nav {
+  padding: 24px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: dm sans, sans-serif;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 10;
+}
+
+nav a {
+  font-weight: 400;
+  font-size: 16px;
+  transition: all .3s ease;
+}
+
+.site-nav .logo img {
+  height: 54px;
+  transition: all 0.3s ease;
+}
+
+.site-nav .logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Book Now Button */
+.rounded-book {
+  border-radius: 30px;
+  padding: 5px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #8C367C;
+  font-family: dm sans, sans-serif;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.rounded-book:hover {
+  background-color: #732d68;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Mobile Nav Modal */
+.mobile-nav {
+  position: fixed;
+  top: 0; right: -100%;
+  width: 70%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 20;
+
+}
+
+.mobile-nav a {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  color: #8C367C;
+}
+
+/* Menu Button */
+.menu-btn, .close-btn {
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-btn:hover, .close-btn:hover {
+  color: #8C367C;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .menu-btn { display: block; }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Footer */
+.site-footer {
+  margin-top: 250px; /* ✅ space above footer */
+  background-color: #faecf6;
+  padding: 40px 20px;
+  font-family: "Inter", sans-serif;
+  color: #333;
+}
+
+.site-footer .terms a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+  margin: 0 5px;
+  transition: color 0.3s;
+}
+
+.site-footer .terms a:hover {
+  color: #8C367C;
+}
+
+.site-footer .footer-logo img {
+  margin-top: 15px;
+  max-height: 40px;
+}
+
+/* Privacy Policy Modal Styling */
+.privacy-policy h6 {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: "Inria Serif", serif;
+}
+
+.privacy-policy p {
+  margin-bottom: 18px;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .privacy-policy h6 {
+    font-size: 16px;
+  }
+  .privacy-policy p {
+    font-size: 14px;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/* Contact Page */
+.contact-info {
+  width: 100%;
+  max-width: 1980px; /* keep wide desktop */
+  margin: 120px auto 60px;
+  padding: 0 20px;
+}
+
+.contact-info h2 {
+  font-family: "Inria Serif", serif;
+  font-weight: 500;
+  font-size: 60px; /* 60px */
+  margin-bottom: 1.2rem;
+  color: #000;
+}
+
+/* Description text */
+.contact-description {
+  font-family: "Inter", sans-serif;
+  font-size: 1.55rem; /* ~25px */
+  margin-bottom: 50px; /* bigger space below */
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Contact details (phone/email) */
+.contact-details p {
+  font-family: "Inter", sans-serif;
+  font-size: 23px;
+  margin-bottom: 50px;
+  color: #222;
+}
+
+/* Business hours */
+.business-hours p {
+  font-family: "Inter", sans-serif;
+  font-size: 23px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-info strong {
+  font-weight: 600;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  .contact-info h2 { font-size: 3rem; }
+  .contact-description { font-size: 1.35rem; }
+  .contact-details p { font-size: 1.15rem; }
+  .business-hours p { font-size: 1rem; }
+}
+
+@media (max-width: 992px) {
+  .contact-info h2 { font-size: 2.5rem; }
+  .contact-description { font-size: 1.2rem; }
+}
+
+@media (max-width: 768px) {
+  .contact-info h2 { font-size: 2rem; }
+  .contact-description { font-size: 1.05rem; }
+}
+
+@media (max-width: 576px) {
+  .contact-info h2 { font-size: 35px; }
+  .contact-description { font-size: 18px; }
+}
+
