@@ -292,7 +292,7 @@
       </div>
     </div>
 
-    <form id="contactForm" method="POST" action="homephp/send_message.php" class="mt-4">
+    <form id="contactForm" method="POST" action="index.php?route=send-message" class="mt-4">
       <div class="mb-3">
         <input type="email" name="from_email" class="form-control" placeholder="From" required>
       </div>

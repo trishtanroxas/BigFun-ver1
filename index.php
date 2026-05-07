@@ -87,6 +87,9 @@ switch ($route) {
     case 'services':
         (new PageController())->services();
         break;
+    case 'send-message':
+        (new PageController())->sendMessage();
+        break;
     
     // --- DEFAULT ---
     case 'home':
