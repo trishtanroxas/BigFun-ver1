@@ -69,7 +69,7 @@ class AuthController extends Controller {
 
             $this->userModel->logHistory((int)$user['id'], $_SERVER['REMOTE_ADDR']);
 
-            $this->json(['status' => 'success', 'redirect' => 'profile-manage.php']);
+            $this->json(['status' => 'success', 'redirect' => 'index.php?route=profile']);
         } else {
             $newAttempts = (int)$user['login_attempts'] + 1;
             $locked = ($newAttempts >= $maxAttempts) ? 1 : 0;

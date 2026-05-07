@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $insert = null;
 
                     // --- Success Response ---
-                    $response = ["status" => "success", "redirect" => "admin-manage.php"]; // Ensure this redirect path is correct
+                    $response = ["status" => "success", "redirect" => "index.php?route=admin-dashboard"]; // Ensure this redirect path is correct
                 } else {
                     $response = ["status" => "error", "message" => "Account not verified. Check email."];
                 }
