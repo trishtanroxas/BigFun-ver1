@@ -1,17 +1,4 @@
 <?php
-session_start();
-
-// 🔒 Prevent cached page access after logout
-header("Cache-Control: no-cache, no-store, must-revalidate");
-header("Pragma: no-cache");
-header("Expires: 0");
-
-// Redirect if not logged in
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
 include "backend/db.php";
 ?>
 <!DOCTYPE html>
