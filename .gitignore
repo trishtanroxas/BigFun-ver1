@@ -1,0 +1,32 @@
+# ============================================================
+#  BigFun VR1 — .gitignore
+# ============================================================
+
+# --- SECRETS — NEVER COMMIT THESE ---
+backend/mail_config.php
+backend/db.php
+.env
+*.env
+config/secrets.php
+
+# --- Logs ---
+backend/*.txt
+*.log
+
+# --- Uploads (user content) ---
+uploads/
+
+# --- PHP / Composer ---
+vendor/
+composer.lock
+
+# --- OS & Editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Node (if ever used) ---
+node_modules/

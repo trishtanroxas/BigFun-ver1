@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+require 'mail_config.php';
 include "db.php";
 
 // --- Email Template Functions ---
@@ -115,8 +116,8 @@ try {
     // Send the appropriate email
     $mail = new PHPMailer(true);
     try {
-        $mail->isSMTP(); $mail->Host = 'smtp.gmail.com'; $mail->SMTPAuth = true; $mail->Username = 'alex1925tan@gmail.com'; $mail->Password = 'REDACTED_SMTP_PASSWORD'; $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; $mail->Port = 587;
-        $mail->setFrom('alex1925tan@gmail.com', 'BigFun');
+        configureSMTP($mail);
+        $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
         $mail->addAddress($data['email'], $customer_name);
         $mail->isHTML(true);
         $mail->Subject = $email_subject;

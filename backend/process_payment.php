@@ -4,6 +4,7 @@
 session_start();
 include "db.php";
 require '../vendor/autoload.php';
+require 'mail_config.php';
 require 'payment_email_template.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -100,14 +101,8 @@ try {
 
     $mail = new PHPMailer(true);
     try {
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'alex1925tan@gmail.com'; // Use environment variables for sensitive data in production
-        $mail->Password   = 'REDACTED_SMTP_PASSWORD'; // Use environment variables
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-        $mail->setFrom('alex1925tan@gmail.com', 'BigFun');
+        configureSMTP($mail);
+        $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
         $mail->addAddress($user['email'], $user['first_name']);
         $mail->isHTML(true);
         $mail->Subject = 'Payment Confirmation for Order #' . $order_id;

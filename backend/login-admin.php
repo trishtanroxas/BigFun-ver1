@@ -36,6 +36,7 @@ if (!file_exists($vendorAutoload)) {
     exit();
 }
 require $vendorAutoload;
+require __DIR__ . '/mail_config.php';
 
 // --- Email Helper File ---
 $emailHelpersFile = __DIR__ . '/attemptlogin-admin_notify.php'; // Your renamed helper file
@@ -102,16 +103,10 @@ function sendAccountLockoutEmail($email, $attacker_info) {
     global $response; // Allow modifying the main response on mail error
     $mail = new PHPMailer(true);
     try {
-        // Your SMTP settings
+        // SMTP settings loaded from mail_config.php
         // $mail->SMTPDebug = SMTP::DEBUG_SERVER; // Uncomment ONLY for detailed email debugging
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'alex1925tan@gmail.com'; // Your Gmail
-        $mail->Password   = 'REDACTED_SMTP_PASSWORD';   // Your App Password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-        $mail->setFrom('alex1925tan@gmail.com', 'BigFun Security');
+        configureSMTP($mail);
+        $mail->setFrom(MAIL_FROM, 'BigFun Security');
         $mail->addAddress($email); // Send to the admin being locked
         $mail->isHTML(true);
         $mail->Subject = 'Security Alert: Your ADMIN Account is Locked';

@@ -10,6 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+require 'mail_config.php';
 include "db.php";
 
 // Function to send a JSON response and exit
@@ -86,15 +87,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail = new PHPMailer(true);
 
         try {
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'alex1925tan@gmail.com';
-            $mail->Password   = 'REDACTED_SMTP_PASSWORD'; // Your App Password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+            configureSMTP($mail);
 
-            $mail->setFrom('alex1925tan@gmail.com', 'BigFun Team');
+            $mail->setFrom(MAIL_FROM, 'BigFun Team');
             $mail->addAddress($email1);
 
             // --- MODIFIED: Dynamic Verification Link ---

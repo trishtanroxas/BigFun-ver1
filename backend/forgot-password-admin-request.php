@@ -19,6 +19,7 @@ if (!file_exists($vendorAutoload)) {
     exit();
 }
 require $vendorAutoload;
+require __DIR__ . '/mail_config.php';
 
 // --- Removed require_once for email helpers as the function will be defined here ---
 // require_once 'attemptlogin-admin_notify.php'; // No longer needed for this specific email body
@@ -101,16 +102,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // --- Email Sending ---
                 // Server settings
                 // $mail->SMTPDebug = SMTP::DEBUG_SERVER; // UNCOMMENT ONLY FOR DEBUGGING
-                $mail->isSMTP();
-                $mail->Host       = 'smtp.gmail.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'alex1925tan@gmail.com'; // Your Gmail address
-                $mail->Password   = 'REDACTED_SMTP_PASSWORD';   // Your Google App Password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port       = 587;
+                configureSMTP($mail);
 
                 // Recipients
-                $mail->setFrom('alex1925tan@gmail.com', 'BigFun Security');
+                $mail->setFrom(MAIL_FROM, 'BigFun Security');
                 $mail->addAddress($email); // Send to the admin's email
 
                 // Content

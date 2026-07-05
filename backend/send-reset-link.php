@@ -6,6 +6,7 @@ include "db.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
+require 'mail_config.php';
 
 
 /**
@@ -99,22 +100,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // --- SEND THE EMAIL ---
                 $mail = new PHPMailer(true);
                 
-                // --- Your SMTP settings ---
-                $mail->isSMTP();
-                
-                // --- CRITICAL FIX: Debugging removed ---
-                // $mail->SMTPDebug = 2; // <-- REMOVED. This was breaking your JSON.
-                // ------------------------------------
-
-                $mail->Host       = 'smtp.gmail.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'alex1925tan@gmail.com'; // Your email
-                $mail->Password   = 'REDACTED_SMTP_PASSWORD'; // Your App Password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port       = 587;
+                // SMTP settings loaded from mail_config.php
+                configureSMTP($mail);
 
                 // --- Recipients ---
-                $mail->setFrom('alex1925tan@gmail.com', 'BigFun'); // From email and name
+                $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
                 $mail->addAddress($email); // Add a recipient (the user's email)
 
                 // --- Content ---

@@ -10,6 +10,7 @@ include "db.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php'; // --- Make sure this path is correct ---
+require 'mail_config.php';
 require_once 'attemptlogin_notify.php'; // --- NOW THIS FILE EXISTS ---
 
 
@@ -55,17 +56,11 @@ function sendAccountLockoutEmail($email, $attacker_info) {
         // --- IMPORTANT: For debugging, uncomment the next line ---
         // $mail->SMTPDebug = 2; 
 
-        // Your SMTP settings
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'alex1925tan@gmail.com'; // Your email
-        $mail->Password   = 'REDACTED_SMTP_PASSWORD'; // Your app password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        // SMTP settings loaded from mail_config.php
+        configureSMTP($mail);
 
         // Recipients
-        $mail->setFrom('alex1925tan@gmail.com', 'BigFun Security');
+        $mail->setFrom(MAIL_FROM, 'BigFun Security');
         $mail->addAddress($email);
 
         // Content

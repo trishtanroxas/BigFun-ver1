@@ -54,6 +54,7 @@ if (!@require __DIR__ . '/../vendor/autoload.php') {
     echo json_encode(['status' => 'error', 'message' => 'Fatal Error: Could not require "../vendor/autoload.php". Please check the file path.']);
     exit;
 }
+require __DIR__ . '/mail_config.php';
 // --- END PHPMailer ---
 
 header('Content-Type: application/json');
@@ -150,15 +151,9 @@ HTML;
 function send_admin_notification_email($to_email, $to_name, $subject, $body) {
     $mail = new PHPMailer(true);
     try {
-        $mail->isSMTP(); 
-        $mail->Host = 'smtp.gmail.com'; 
-        $mail->SMTPAuth = true; 
-        $mail->Username = 'alex1925tan@gmail.com'; // Your email
-        $mail->Password = 'REDACTED_SMTP_PASSWORD'; // Your app password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
-        $mail->Port = 587;
+        configureSMTP($mail);
         
-        $mail->setFrom('no-reply@bigfun.com', 'BigFun');
+        $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
         $mail->addAddress($to_email, $to_name);
         $mail->isHTML(true);
         $mail->Subject = $subject;

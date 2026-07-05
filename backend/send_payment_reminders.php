@@ -4,6 +4,7 @@
 
 include "db.php";
 require '../vendor/autoload.php';
+require 'mail_config.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -25,17 +26,11 @@ if ($orders_to_remind->num_rows > 0) {
     while ($order = $orders_to_remind->fetch_assoc()) {
         $mail = new PHPMailer(true);
         try {
-            // Your SMTP settings
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'alex1925tan@gmail.com';
-            $mail->Password   = 'REDACTED_SMTP_PASSWORD';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+            // SMTP settings loaded from mail_config.php
+            configureSMTP($mail);
 
             // Recipients
-            $mail->setFrom('alex1925tan@gmail.com', 'BigFun');
+            $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
             $mail->addAddress($order['user_email'], $order['first_name']);
 
             // Content

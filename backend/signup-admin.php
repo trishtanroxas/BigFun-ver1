@@ -10,6 +10,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+require 'mail_config.php';
 include "db.php";
 
 // Function to send a JSON response and exit
@@ -69,15 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         $mail = new PHPMailer(true);
         try {
-            $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'alex1925tan@gmail.com';
-            $mail->Password   = 'REDACTED_SMTP_PASSWORD'; // IMPORTANT: Use environment variables in production
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+            configureSMTP($mail);
 
-            $mail->setFrom('alex1925tan@gmail.com', 'BigFun Admin Team');
+            $mail->setFrom(MAIL_FROM, 'BigFun Admin Team');
             $mail->addAddress($email1);
 
             $verifyLink = "http://localhost:3000/backend/verify-admin.php?token=" . $token;

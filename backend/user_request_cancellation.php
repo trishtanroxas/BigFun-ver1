@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+require 'mail_config.php';
 require 'email_template_user_cancel_request.php';
 require 'email_template_admin_cancellation_alert.php';
 include "db.php";
@@ -71,8 +72,8 @@ try {
     // Send email to USER
     $mail_user = new PHPMailer(true);
     try {
-        $mail_user->isSMTP(); $mail_user->Host = 'smtp.gmail.com'; $mail_user->SMTPAuth = true; $mail_user->Username = 'alex1925tan@gmail.com'; $mail_user->Password = 'REDACTED_SMTP_PASSWORD'; $mail_user->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; $mail_user->Port = 587;
-        $mail_user->setFrom('alex1925tan@gmail.com', 'BigFun');
+        configureSMTP($mail_user);
+        $mail_user->setFrom(MAIL_FROM, MAIL_FROM_NAME);
         $mail_user->addAddress($data['email'], $customer_name);
         $mail_user->isHTML(true);
         $mail_user->Subject = 'Cancellation Request Received for Order #' . $order_id;
@@ -83,9 +84,9 @@ try {
     // Send email to ADMIN
     $mail_admin = new PHPMailer(true);
     try {
-        $mail_admin->isSMTP(); $mail_admin->Host = 'smtp.gmail.com'; $mail_admin->SMTPAuth = true; $mail_admin->Username = 'alex1925tan@gmail.com'; $mail_admin->Password = 'REDACTED_SMTP_PASSWORD'; $mail_admin->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; $mail_admin->Port = 587;
-        $mail_admin->setFrom('no-reply@bigfun.com', 'BigFun System');
-        $mail_admin->addAddress('alex1925tan@gmail.com', 'BigFun Admin'); // Your admin email
+        configureSMTP($mail_admin);
+        $mail_admin->setFrom(MAIL_FROM, 'BigFun System');
+        $mail_admin->addAddress(MAIL_ADMIN, 'BigFun Admin');
         $mail_admin->isHTML(true);
         $mail_admin->Subject = 'ACTION REQUIRED: New Cancellation Request for Order #' . $order_id;
         $mail_admin->Body    = generateAdminCancellationAlert($customer_name, $order_id, $data['date_event'], $request_time, $final_reason);

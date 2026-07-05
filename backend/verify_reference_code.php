@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+require 'mail_config.php';
 require 'email_template_payment_verified.php';
 include "db.php";
 
@@ -77,15 +78,9 @@ try {
     $customer_name = trim($data['first_name'] . ' ' . $data['last_name']);
     $mail = new PHPMailer(true);
     try {
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'alex1925tan@gmail.com';
-        $mail->Password   = 'REDACTED_SMTP_PASSWORD';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        configureSMTP($mail);
 
-        $mail->setFrom('alex1925tan@gmail.com', 'BigFun');
+        $mail->setFrom(MAIL_FROM, MAIL_FROM_NAME);
         $mail->addAddress($data['email'], $customer_name);
         $mail->isHTML(true);
         $mail->Subject = 'Payment Verified for Your Order #' . $order_id;
